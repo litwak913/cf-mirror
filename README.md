@@ -55,6 +55,7 @@ Curseforge 镜像工具
 ## 自行编译
   1.下载源代码
   ```shell
+  git clone https://github.com/litwak913/cf-mirror.git
   ```
   2.编译并生成可运行jar文件
   ```shell
@@ -71,7 +72,7 @@ Curseforge 镜像工具
 
 ## 鸣谢
   cf-mirror使用了以下开源库，在此对这些开源库的作者表示致谢。
-  - Gson
-  - Okhttp3
-  - jopt-simple
+  - [Gson](https://github.com/google/gson)
+  - [Okhttp3](https://github.com/square/okhttp)
+  - [jopt-simple](https://github.com/jopt-simple/jopt-simple)
 
