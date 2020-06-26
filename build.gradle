@@ -1,0 +1,22 @@
+buildscript{
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/central/' }
+    }
+}
+plugins {
+    id 'java'
+}
+
+group 'io.github.litwak913'
+version '1.0'
+
+repositories {
+    maven { url 'https://maven.aliyun.com/repository/central/' }
+}
+
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'net.sf.jopt-simple:jopt-simple:6.0-alpha-3'
+
+}
