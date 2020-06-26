@@ -1,6 +1,10 @@
 # cf-mirror  
- <center>Curseforge 镜像工具 ![GitHub](https://img.shields.io/github/license/litwak913/cf-mirror?style=flat-square) ![Java version](https://img.shields.io/badge/Java-1.8.0-orange?style=flat-square)</center>
-
+ <p align="center">
+ <a>CurseForge 镜像工具</a>
+<img src="https://img.shields.io/github/license/litwak913/cf-mirror?style=flat-square" alt="GitHub">
+<img src="https://img.shields.io/badge/Java-1.8.0-orange?style=flat-square" alt="Java version">
+</p>
+ 
 
 
 ## 简介
