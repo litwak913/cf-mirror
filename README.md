@@ -1,7 +1,7 @@
 # cf-mirror  
-Curseforge 镜像工具
-![GitHub](https://img.shields.io/github/license/litwak913/cf-mirror?style=flat-square)
-![Java version](https://img.shields.io/badge/Java-1.8.0-orange?style=flat-square)
+ <center>Curseforge 镜像工具 ![GitHub](https://img.shields.io/github/license/litwak913/cf-mirror?style=flat-square) ![Java version](https://img.shields.io/badge/Java-1.8.0-orange?style=flat-square)</center>
+
+
 
 ## 简介
 该工具通过镜像CurseForge来解决CurseForge新的hCaptcha验证码慢，1020问题及部分地区被墙的问题
