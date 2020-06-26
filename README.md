@@ -6,7 +6,7 @@ Curseforge 镜像工具
 
 - JRE运行环境（可到https://www.java.com/ 下载）
 - 如果你要镜像所有文件，建议准备一个好用的梯子
-- 如果自行编译，需要安装JDK（可到https://www.oracle.com/java/technologies/javase-downloads.html 下载）
+- 如果自行编译，需要安装JDK（可到https://www.oracle.com/java/technologies/javase-downloads.html 下载）和 git （可到https://git-scm.com/下载）
 
 ## 使用
 
@@ -50,6 +50,28 @@ Curseforge 镜像工具
    #使用代理镜像所有mods文件,并保存到当前目录下的mirror文件夹
    java -Dhttps.proxyHost=127.0.0.1 -Dhttp.proxyHost=127.0.0.1 -Dhttps.proxyPort=1080 -Dhttp.proxyPort=1080 -jar cf-mirror.jar --type mods --mode file --output ./mirrors
    ```
-3.耐心等待，直到出现绿色 <font color=#008000>ALL DONE</font> 时完成。
+  3.耐心等待，直到出现绿色 <font color=#008000>ALL DONE</font> 时完成。
     如果出现红色的 <font color=red>FAILED</font> ,请再试一次。可以重新运行相同的命令尝试，如果还是不可以，可以尝试使用上面提到的使用代理的模式。
+## 自行编译
+  1.下载源代码
+  ```shell
+  ```
+  2.编译并生成可运行jar文件
+  ```shell
+  ./gradlew build
+  ./gradlew shadowJar
+  ```
+  完成后，jar文件存放于当前目录下的build/libs文件夹中。
+## 常见问题
+  Q：为什么下载mod文件，获取列表下载慢？
+  A：请看上面使用代理的方式来下载。
+  
+  Q：文件保存到哪了？
+  A：默认在当前目录下的data文件夹，可用`--output`指定位置。
+
+## 鸣谢
+  cf-mirror使用了以下开源库，在此对这些开源库的作者表示致谢。
+  - Gson
+  - Okhttp3
+  - jopt-simple
 
