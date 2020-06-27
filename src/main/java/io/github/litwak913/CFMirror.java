@@ -6,7 +6,7 @@ public class CFMirror {
 
     private String jsonString;
 
-    public void startMirror(String[] mirror,String mode){
+    public void startMirror(String[] mirror,String mode,boolean verbose,String dir){
         if(mirror[0]=="mods"){
             mirrorMods();
             if (mirror.length==2) {
