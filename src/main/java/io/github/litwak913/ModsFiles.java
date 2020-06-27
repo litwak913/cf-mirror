@@ -1,5 +1,5 @@
 
-package io.github.litwak913.gson;
+package io.github.litwak913;
 
 import java.util.Date;
 import java.util.List;

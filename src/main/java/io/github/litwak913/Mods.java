@@ -1,5 +1,5 @@
 
-package io.github.litwak913.gson;
+package io.github.litwak913;
 
 
 
