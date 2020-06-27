@@ -6,7 +6,7 @@ public class CFMirror {
 
     private String jsonString;
 
-    public void startMirror(String[] mirror,String mode){
+    public void startMirror(String[] mirror,String mode,boolean verbose,String dir){
         if(mirror[0]=="mods"){
             mirrorMods();
             if (mirror.length==2) {
@@ -40,5 +40,6 @@ public class CFMirror {
             System.out.println("\033[31;4m"+"ERROR:Network Error"+"\033[0m");
             System.exit(1);
         }
+        System.out.println(jsonString);
     }
 }
