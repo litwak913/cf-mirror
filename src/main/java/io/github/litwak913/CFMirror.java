@@ -40,5 +40,6 @@ public class CFMirror {
             System.out.println("\033[31;4m"+"ERROR:Network Error"+"\033[0m");
             System.exit(1);
         }
+        System.out.println(jsonString);
     }
 }
