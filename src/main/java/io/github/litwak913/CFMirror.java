@@ -2,13 +2,19 @@ package io.github.litwak913;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.util.List;
 
-public class CFMirror {
 
+public class CFMirror {
+    org.apache.log4j.Logger logger = Logger.getLogger(CFMirror.class);
     public void startMirror(String mode, boolean verbose, String dir) {
+        if (verbose == true) {
+            logger.setLevel(Level.ALL);
+        }
         mirrorMods();
     }
 
