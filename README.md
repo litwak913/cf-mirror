@@ -1,6 +1,6 @@
 # cf-mirror  
  <p align="center">
- <a>CurseForge 镜像工具</a>
+ <a>CurseForge 镜像站搭建工具</a>
 <img src="https://img.shields.io/github/license/litwak913/cf-mirror?style=flat-square" alt="GitHub">
 <img src="https://img.shields.io/badge/Java-1.8.0-orange?style=flat-square" alt="Java version">
 </p>
@@ -8,7 +8,7 @@
 
 
 ## 简介
-该工具通过镜像CurseForge来解决CurseForge新的hCaptcha验证码慢，1020问题及部分地区被墙的问题
+该工具通过搭建CurseForge镜像站来解决CurseForge新的hCaptcha验证码慢，1020问题及部分地区被墙的问题
 ### 环境要求
 
 - JRE运行环境（可到https://www.java.com/ 下载）
@@ -81,5 +81,5 @@
   cf-mirror使用了以下开源库，在此对这些开源库的作者表示致谢。
   - [Gson](https://github.com/google/gson)
   - [Okhttp3](https://github.com/square/okhttp)
-  - [jopt-simple](https://github.com/jopt-simple/jopt-simple)
+ 
 
