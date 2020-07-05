@@ -8,24 +8,16 @@ import java.util.List;
 
 public class CFMirror {
 
-    private String jsonString;
-    private String fileJsonString;
-
     public void startMirror(String mode, boolean verbose, String dir) {
-
-
         mirrorMods();
     }
-
-
-
 
     private void mirrorMods() {
         System.out.println("Start mirror mods");
         for (int i = 0; i < 100; i++)
             try {
-                jsonString = Http.doHttpRequest("api/v2/addon/search?gameId=432&index=" + 1 * i + "&pageSize=2&sort=1&sectionId=6");
-                if (jsonString .equals( "ERROR")) {
+                String jsonString = Http.doHttpRequest("api/v2/addon/search?gameId=432&index=" + 100 * i + "&pageSize=100&sort=1&sectionId=6");
+                if (jsonString.equals("ERROR")) {
                     System.out.println("\033[31;4m" + "ERROR:Network Error" + "\033[0m");
                     System.exit(1);
                 }
@@ -35,7 +27,7 @@ public class CFMirror {
                 for (Mods v : list) {
                     System.out.println(v.getId());
                     System.out.println("Get file list");
-                    fileJsonString = Http.doHttpRequest("api/v2/addon/" + v.getId() + "/files");
+                    String fileJsonString = Http.doHttpRequest("api/v2/addon/" + v.getId() + "/files");
 
                     List<ModsFiles> mflist = new Gson().fromJson(fileJsonString, new TypeToken<List<ModsFiles>>() {
                     }.getType());
