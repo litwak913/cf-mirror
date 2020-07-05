@@ -20,16 +20,16 @@
 1. 从 https://github.com/Litwak913/cf-mirror/release 中下载cf-mirror，如果下载慢或无法下载，请看下面的教程自行编译。
 2. 运行 cf-mirror
    ```shell
-   java -jar cf-mirror.jar 
+   java -jar cf-mirror.jar <mode> [output] [verbose]
    ```
    参数：
-   - `--type` ：镜像类型,可添加多个，用空格分割，可用的如下：  
-     `mods` ：镜像Mod
-   - `--mode`：选择镜像模式，可用的如下：  
+
+   - `<mode>`：选择镜像模式，可用的如下：
      `list`：镜像列表  
      `file`：镜像文件  
      `all`：镜像所有  
-   - `--output`：指定输出目录  
+   - `[output]`：指定输出目录
+   - `[verbose]`:详细日志输出
 
    如果你使用代理：
    可以通过添加参数的方式设置代理，`<host>`表示代理服务器的地址，`<port>`表示开放代理的端口。
