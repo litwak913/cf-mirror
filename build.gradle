@@ -24,3 +24,23 @@ dependencies {
     implementation 'com.beust:jcommander:1.72'
     testImplementation 'junit:junit:4.12'
 }
+
+jar {
+    archivesBaseName='CFMirror'
+    archiveVersion='1.0'
+    manifest{
+        attributes(
+                "Manifest-Version": 1.0,
+                'Main-Class': 'io.github.litwak913.Main'
+        )
+    }
+    from {
+        (configurations.runtimeClasspath).collect {
+            it.isDirectory()? it:zipTree(it)
+        }
+    }
+    from('./'){
+        include 'README.md'
+        include 'LICENSE'
+    }
+}
