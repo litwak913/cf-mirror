@@ -11,7 +11,7 @@ import java.util.List;
 public class CFMirror {
     private Log log;
 
-    public void startMirror(String mode, boolean verbose, String dir) {
+    public void startMirror(String mode, String dir) {
         log = LogFactory.getLog(CFMirror.class);
         log.info("Start mirror");
         mirrorMods();
