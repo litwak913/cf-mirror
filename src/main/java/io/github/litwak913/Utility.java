@@ -1,6 +1,7 @@
 package io.github.litwak913;
 
-
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpEntity;
@@ -12,8 +13,9 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.util.List;
 
-public class Http {
+public class Utility {
     public static final String CF_URL = "https://addons-ecs.forgesvc.net/";
 
     public static String doHttpRequest(String extra) {
@@ -23,7 +25,7 @@ public class Http {
         CloseableHttpClient httpClient = null;
         CloseableHttpResponse response = null;
         String result = null;
-        log = LogFactory.getLog(Http.class);
+        log = LogFactory.getLog(Utility.class);
         try {
             httpClient = HttpClients.createDefault();
             HttpGet httpGet = new HttpGet(url);
@@ -56,5 +58,15 @@ public class Http {
             }
         }
         return result;
+    }
+
+    public static List<ModsFiles> encodeModFileListJson(String modInfoData) {
+        return new Gson().fromJson(modInfoData, new TypeToken<List<ModsFiles>>() {
+        }.getType());
+    }
+
+    public static List<Mods> encodeModInfoJson(String modInfoData) {
+        return new Gson().fromJson(modInfoData, new TypeToken<List<Mods>>() {
+        }.getType());
     }
 }

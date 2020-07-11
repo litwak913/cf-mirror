@@ -21,14 +21,14 @@ public class CFMirror {
         System.out.println("Start mirror mods");
         for (int i = 0; i < 100; i++) {
             log.info("Downloading Mods index");
-            String jsonString = Http.doHttpRequest("api/v2/addon/search?gameId=432&index=" + 100 * i + "&pageSize=100&sort=1&sectionId=6");
+            String jsonString = Utility.doHttpRequest("api/v2/addon/search?gameId=432&index=" + 100 * i + "&pageSize=100&sort=1&sectionId=6");
             log.debug(jsonString);
             List<Mods> list = new Gson().fromJson(jsonString, new TypeToken<List<Mods>>() {
             }.getType());
             for (Mods v : list) {
                 log.debug(v.getId());
                 log.info("Get mod file list:" + v.getName());
-                String fileJsonString = Http.doHttpRequest("api/v2/addon/" + v.getId() + "/files");
+                String fileJsonString = Utility.doHttpRequest("api/v2/addon/" + v.getId() + "/files");
 
                 List<ModsFiles> mflist = new Gson().fromJson(fileJsonString, new TypeToken<List<ModsFiles>>() {
                 }.getType());
