@@ -11,8 +11,8 @@ public class Config {
             required = true,
             order = 0)
     String mode;
-    @Parameter(names = "--help", help = true, order = 3, description = "display this help and exit")
+    @Parameter(names = "--help", help = true, order = 2, description = "display this help and exit")
     boolean help;
-    @Parameter(names = "--version", help = true, order = 4, description = "output version information and exit")
+    @Parameter(names = "--version", help = true, order = 3, description = "output version information and exit")
     boolean version;
 }

@@ -13,6 +13,7 @@ public class Main {
         String[] jarpatharray = jarpath.split("/");
         String jarName = jarpatharray[jarpatharray.length - 1];
         JCommander jcmd = new JCommander().newBuilder().addObject(cfg).build();
+        jcmd.parse(args);
         if (cfg.help) {
             jcmd.setProgramName("java -jar " + jarName);
             jcmd.usage();
