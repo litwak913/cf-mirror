@@ -1,28 +1,29 @@
 package io.github.litwak913;
 
 
+import com.beust.jcommander.JCommander;
+
 public class Main {
 
 
     public static void main(String[] args) {
-        boolean verbose = false;
-        String dir = "./output";
-        if (args.length != 1) {
-            System.out.println("Usage: java -jar cf-mirror.jar <mode>  [dir] [verbose] ");
-            System.out.println("Mode: \n list: mirror all mods lists. " +
-                    "\n file: mirror all mods files. " +
-                    "\n all: mirror all mods list and files");
-        }
-        if (args.length == 2) {
-            dir = args[1];
-        }
-        if (args.length == 3) {
-            if (args[2].equals("on")) {
-                verbose = true;
-            }
-        }
+        Config cfg = new Config();
+        String jarpath = System.getProperty("java.class.path");
 
-
-        new CFMirror().startMirror(args[0], verbose, dir);
+        String[] jarpatharray = jarpath.split("/");
+        String jarName = jarpatharray[jarpatharray.length - 1];
+        JCommander jcmd = new JCommander().newBuilder().addObject(cfg).build();
+        jcmd.parse(args);
+        if (cfg.help) {
+            jcmd.setProgramName("java -jar " + jarName);
+            jcmd.usage();
+            return;
+        }
+        if (cfg.version) {
+            JCommander.getConsole().println("CFMirror v1.0");
+            JCommander.getConsole().println("This program may be freely redistributed under the terms of the GNU General Public License.");
+            return;
+        }
+        new CFMirror().startMirror(cfg.mode, cfg.dir);
     }
 }

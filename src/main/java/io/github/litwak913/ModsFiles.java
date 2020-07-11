@@ -1,4 +1,3 @@
-
 package io.github.litwak913;
 
 
@@ -17,22 +16,20 @@ public class ModsFiles {
         this.fileLength = fileLength;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-
     public String getFileName() {
         return fileName;
     }
 
-
-
-    public void setDownloadUrl(String downloadUrl) {
-        this.downloadUrl = downloadUrl;
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     public String getDownloadUrl() {
         return downloadUrl;
+    }
+
+    public void setDownloadUrl(String downloadUrl) {
+        this.downloadUrl = downloadUrl;
     }
 
 

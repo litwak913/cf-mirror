@@ -1,6 +1,4 @@
-
 package io.github.litwak913;
-
 
 
 public class Mods {
@@ -25,12 +23,13 @@ public class Mods {
         return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
 
