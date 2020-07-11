@@ -20,7 +20,7 @@
 1. 从 https://github.com/Litwak913/cf-mirror/release 中下载cf-mirror，如果下载慢或无法下载，请看下面的教程自行编译。
 2. 运行 cf-mirror
    ```shell
-   java -jar cf-mirror.jar <mode> [output] [verbose]
+   java -jar cf-mirror.jar --mode <mode> --output [output]
    ```
    参数：
 
@@ -29,7 +29,7 @@
      `file`：镜像文件  
      `all`：镜像所有  
    - `[output]`：指定输出目录
-   - `[verbose]`:详细日志输出,on开启
+
 
    如果你使用代理：
    可以通过添加参数的方式设置代理，`<host>`表示代理服务器的地址，`<port>`表示开放代理的端口。
@@ -57,8 +57,8 @@
    #使用代理镜像所有mods文件,并保存到当前目录下的mirror文件夹
    java -Dhttps.proxyHost=127.0.0.1 -Dhttp.proxyHost=127.0.0.1 -Dhttps.proxyPort=1080 -Dhttp.proxyPort=1080 -jar cf-mirror.jar --type mods --mode file --output ./mirrors
    ```
-  3.耐心等待，直到出现绿色 <font color=#008000>ALL DONE</font> 时完成。
-    如果出现红色的 <font color=red>FAILED</font> ,请再试一次。可以重新运行相同的命令尝试，如果还是不可以，可以尝试使用上面提到的使用代理的模式。
+  3.耐心等待，直到出现绿色 ALL DONE 时完成。
+    如果出现Network Error或Fatal Error,请再试一次。可以重新运行相同的命令尝试，如果还是不可以，可以尝试使用上面提到的使用代理的模式。
 ## 自行编译
   1.下载源代码
   ```shell
@@ -67,7 +67,6 @@
   2.编译并生成可运行jar文件
   ```shell
   ./gradlew build
-  ./gradlew shadowJar
   ```
   完成后，jar文件存放于当前目录下的build/libs文件夹中。
 ## 常见问题
@@ -80,6 +79,8 @@
 ## 鸣谢
   cf-mirror使用了以下开源库，在此对这些开源库的作者表示致谢。
   - [Gson](https://github.com/google/gson)
-  - [Okhttp3](https://github.com/square/okhttp)
+  - [Log4j2](http://logging.apache.org)
+  - [httpclient](http://hc.apache.org)
+  - [jcommander](https://github.com/cbeust/jcommander)
  
 

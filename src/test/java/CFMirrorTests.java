@@ -1,3 +1,5 @@
+import com.beust.jcommander.JCommander;
+import io.github.litwak913.Config;
 import io.github.litwak913.Mods;
 import io.github.litwak913.ModsFiles;
 import io.github.litwak913.Utility;
@@ -26,5 +28,15 @@ public class CFMirrorTests {
             Assert.assertEquals("Tests", v.getFileName());
             Assert.assertEquals("www.google.com", v.getDownloadUrl());
         }
+    }
+
+    @Test
+    public void testArgs() {
+        Config cfg = new Config();
+        String[] args = {"--output", "./hello", "--mode", "all"};
+        JCommander jcmd = new JCommander().newBuilder().addObject(cfg).build();
+        jcmd.parse(args);
+        Assert.assertEquals(cfg.dir, "./hello");
+        Assert.assertEquals(cfg.mode, "all");
     }
 }
