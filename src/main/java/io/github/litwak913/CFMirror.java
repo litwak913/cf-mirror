@@ -8,9 +8,9 @@ import org.apache.commons.logging.LogFactory;
 import java.util.List;
 
 
-
 public class CFMirror {
     private Log log;
+
     public void startMirror(String mode, boolean verbose, String dir) {
         log = LogFactory.getLog(CFMirror.class);
         log.info("Start mirror");
