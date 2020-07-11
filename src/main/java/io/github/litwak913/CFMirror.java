@@ -18,7 +18,7 @@ public class CFMirror {
     }
 
     private void mirrorMods() {
-        System.out.println("Start mirror mods");
+        log.info("Start mirror mods");
         for (int i = 0; i < 100; i++) {
             log.info("Downloading Mods index");
             String jsonString = Utility.doHttpRequest("api/v2/addon/search?gameId=432&index=" + 100 * i + "&pageSize=100&sort=1&sectionId=6");

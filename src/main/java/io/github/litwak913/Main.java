@@ -21,6 +21,7 @@ public class Main {
         if (cfg.version) {
             JCommander.getConsole().println("CFMirror v1.0");
             JCommander.getConsole().println("This program may be freely redistributed under the terms of the GNU General Public License.");
+            return;
         }
         new CFMirror().startMirror(cfg.mode, cfg.dir);
     }
