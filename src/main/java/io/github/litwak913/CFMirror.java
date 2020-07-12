@@ -73,7 +73,8 @@ public class CFMirror {
                 }
             }
         }
-
+        log.info("ALL DONE");
+        System.exit(0);
 
     }
 }
