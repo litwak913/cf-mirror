@@ -14,13 +14,13 @@ import java.util.List;
 public class CFMirror {
     private Log log;
 
-    public void startMirror(String mode, String dir) {
+    public void startMirror(String dir) {
         log = LogFactory.getLog(CFMirror.class);
         log.info("Start mirror");
-        mirrorMods(mode, dir);
+        mirrorMods(dir);
     }
 
-    private void mirrorMods(String mode, String dir) {
+    private void mirrorMods(String dir) {
         File file = new File(dir);
         FileWriter fw = null;
 
@@ -38,8 +38,8 @@ public class CFMirror {
             }.getType());
             for (Mods v : list) {
                 File modDataFile = new File(dir + v.getSlug() + ".txt");
-                if (mode.equals("list") || mode.equals("all")) {
-                    try {
+
+                try {
                         file.createNewFile();
                         log.info("create file:" + file.getName());
                         fw = new FileWriter(file);
@@ -47,7 +47,7 @@ public class CFMirror {
                     } catch (IOException e) {
                         Utility.crashAndExit("Fatal Error", e, log);
                     }
-                }
+
                 log.debug(v.getId());
                 log.info("Get mod file list:" + v.getName());
                 String fileJsonString = Utility.doHttpRequest("api/v2/addon/" + v.getId() + "/files");
@@ -57,13 +57,13 @@ public class CFMirror {
                 for (ModsFiles mf : mflist) {
                     log.debug(mf.getFileName());
                     log.debug(mf.getDownloadUrl());
-                    if (mode.equals("list") || mode.equals("all")) {
-                        try {
+
+                    try {
                             Utility.writeModFileData(fw, mf.getFileName(), mf.getDownloadUrl(), mf.getFileLength());
                         } catch (IOException e) {
                             Utility.crashAndExit("Fatal Error", e, log);
                         }
-                    }
+
 
                 }
                 try {
