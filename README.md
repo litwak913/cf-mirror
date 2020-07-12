@@ -1,13 +1,14 @@
 # cf-mirror  
 CurseForge 列表生成工具
-![license](https://img.shields.io/github/license/litwak913/cf-mirror?style=flat-square" alt="GitHub")
-![java-version](https://img.shields.io/badge/Java-1.8.0-orange?style=flat-square" alt="Java version")
+![license](https://img.shields.io/github/license/litwak913/cf-mirror?style=flat-square")
+![java-version](https://img.shields.io/badge/Java-1.8.0-orange?style=flat-square")
+![Build CFMirror](https://github.com/litwak913/cf-mirror/workflows/Build%20CFMirror/badge.svg)
 
  
 
 
 ## 简介
-该工具通过镜像CurseForge列表来解决CurseForge新的hCaptcha验证码慢，1020问题及部分地区被墙的问题
+该工具通过镜像CurseForge列表来解决CurseForge新的hCaptcha验证码慢，1020问题及部分地区被墙的问题  
 **注：为尊重原作者权利，不提供下载模组文件的功能。**
 ### 环境要求
 
