@@ -2,6 +2,10 @@
 name: Build CFMirror
 
 on:
+  repository_dispatch:
+    types: [build]
+  schedule:
+    - cron: 0 20 * * *
   push:
     branches: [ master ]
   pull_request:
