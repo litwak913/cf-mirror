@@ -24,7 +24,7 @@ public class CFMirrorTests {
         String modInfoData = "[{\"fileLength\":32274,\"fileName\":\"Tests\",\"downloadUrl\":\"www.google.com\"}]";
         List<ModsFiles> list = Utility.encodeModFileListJson(modInfoData);
         for (ModsFiles v : list) {
-            Assert.assertEquals(32274, Integer.parseInt(v.getFileLength()));
+            Assert.assertEquals(32274, v.getFileLength());
             Assert.assertEquals("Tests", v.getFileName());
             Assert.assertEquals("www.google.com", v.getDownloadUrl());
         }
@@ -33,10 +33,10 @@ public class CFMirrorTests {
     @Test
     public void testArgs() {
         Config cfg = new Config();
-        String[] args = {"--output", "./hello", "--mode", "all"};
+        String[] args = {"--output", "./hello"};
         JCommander jcmd = new JCommander().newBuilder().addObject(cfg).build();
         jcmd.parse(args);
         Assert.assertEquals(cfg.dir, "./hello");
-        Assert.assertEquals(cfg.mode, "all");
+
     }
 }
