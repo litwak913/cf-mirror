@@ -33,7 +33,7 @@ public class CFMirrorTests {
     @Test
     public void testArgs() {
         Config cfg = new Config();
-        String[] args = {"--output", "./hello", "--mode", "all"};
+        String[] args = {"--output", "./hello"};
         JCommander jcmd = new JCommander().newBuilder().addObject(cfg).build();
         jcmd.parse(args);
         Assert.assertEquals(cfg.dir, "./hello");
