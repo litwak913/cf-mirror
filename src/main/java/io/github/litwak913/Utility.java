@@ -12,6 +12,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
@@ -40,20 +41,20 @@ public class Utility {
 
             result = EntityUtils.toString(entity);
         } catch (IOException e) {
-            log.error("Network Error", e);
+            Utility.crashAndExit("Network Error", e, log);
         } finally {
             if (null != response) {
                 try {
                     response.close();
                 } catch (IOException e) {
-                    log.error("Fatal Error", e);
+                    Utility.crashAndExit("Fatal Error", e, log);
                 }
             }
             if (null != httpClient) {
                 try {
                     httpClient.close();
                 } catch (IOException e) {
-                    log.error("Fatal Error", e);
+                    Utility.crashAndExit("Fatal Error", e, log);
                 }
             }
         }
@@ -68,5 +69,20 @@ public class Utility {
     public static List<Mods> encodeModInfoJson(String modInfoData) {
         return new Gson().fromJson(modInfoData, new TypeToken<List<Mods>>() {
         }.getType());
+    }
+
+    public static void writeModFileData(FileWriter fw, String modName, String fileName, String downloadUrl, int fileLength) throws IOException {
+        fw.write("FileName:" + fileName);
+        fw.write("FileLength:" + fileLength);
+        fw.write("DownloadUrl:" + downloadUrl);
+    }
+
+    public static void writeModInfoData(FileWriter fw, String modName) throws IOException {
+        fw.write("ModName:" + modName);
+    }
+
+    public static void crashAndExit(String info, Throwable e, Log log) {
+        log.error(info, e);
+        System.exit(1);
     }
 }
