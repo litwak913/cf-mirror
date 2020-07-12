@@ -1,8 +1,4 @@
-buildscript {
-    repositories {
-        maven { url 'https://maven.aliyun.com/repository/central/' }
-    }
-}
+
 plugins {
     id 'java'
 }
@@ -11,7 +7,7 @@ group 'io.github.litwak913'
 version '1.0'
 
 repositories {
-    maven { url 'https://maven.aliyun.com/repository/central/' }
+    mavenCentral()
 }
 
 

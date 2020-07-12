@@ -6,13 +6,13 @@ public class ModsFiles {
 
     private String fileName;
     private String downloadUrl;
-    private String fileLength;
+    private int fileLength;
 
-    public String getFileLength() {
+    public int getFileLength() {
         return fileLength;
     }
 
-    public void setFileLength(String fileLength) {
+    public void setFileLength(int fileLength) {
         this.fileLength = fileLength;
     }
 
