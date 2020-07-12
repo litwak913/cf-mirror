@@ -22,6 +22,8 @@ public class CFMirror {
 
     private void mirrorMods(String mode, String dir) {
         File file = new File(dir);
+        FileWriter fw = null;
+
         if (!file.exists() && !file.isDirectory()) {
             log.info("Create directory:" + dir);
             file.mkdirs();
@@ -36,13 +38,15 @@ public class CFMirror {
             }.getType());
             for (Mods v : list) {
                 File modDataFile = new File(dir + v.getSlug() + ".txt");
-                try {
-                    file.createNewFile();
-                    log.info("create file:" + file.getName());
-                    FileWriter fw = new FileWriter(modDataFile);
-                    Utility.writeModInfoData(fw, v.getName());
-                } catch (IOException e) {
-                    Utility.crashAndExit("Fatal Error", e, log);
+                if (mode.equals("list") || mode.equals("all")) {
+                    try {
+                        file.createNewFile();
+                        log.info("create file:" + file.getName());
+                        fw = new FileWriter(file);
+                        Utility.writeModInfoData(fw, v.getName());
+                    } catch (IOException e) {
+                        Utility.crashAndExit("Fatal Error", e, log);
+                    }
                 }
                 log.debug(v.getId());
                 log.info("Get mod file list:" + v.getName());
@@ -53,6 +57,19 @@ public class CFMirror {
                 for (ModsFiles mf : mflist) {
                     log.debug(mf.getFileName());
                     log.debug(mf.getDownloadUrl());
+                    if (mode.equals("list") || mode.equals("all")) {
+                        try {
+                            Utility.writeModFileData(fw, mf.getFileName(), mf.getDownloadUrl(), mf.getFileLength());
+                        } catch (IOException e) {
+                            Utility.crashAndExit("Fatal Error", e, log);
+                        }
+                    }
+
+                }
+                try {
+                    fw.close();
+                } catch (IOException e) {
+                    Utility.crashAndExit("Fatal Error", e, log);
                 }
             }
         }

@@ -71,7 +71,7 @@ public class Utility {
         }.getType());
     }
 
-    public static void writeModFileData(FileWriter fw, String modName, String fileName, String downloadUrl, int fileLength) throws IOException {
+    public static void writeModFileData(FileWriter fw, String fileName, String downloadUrl, int fileLength) throws IOException {
         fw.write("FileName:" + fileName);
         fw.write("FileLength:" + fileLength);
         fw.write("DownloadUrl:" + downloadUrl);
