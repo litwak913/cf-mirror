@@ -46,7 +46,7 @@ CurseForge 列表生成工具
    
    ```shell
    #镜像所有mods列表,并保存到当前目录下的mirror文件夹
-   java -jar cf-mirror.jar --type mods --output ./mirrors
+   java -jar cf-mirror.jar --output ./mirrors
    ```
    Shadowsocks客户端默认监听127.0.0.1:1080作为代理服务来运行, 当您配置完Shadowsocks后您可以执行以下命令来使用代理进行镜像:
    ```shell
@@ -66,11 +66,11 @@ CurseForge 列表生成工具
   ```
   完成后，jar文件存放于当前目录下的build/libs文件夹中。
 ## 常见问题
-  Q：为什么获取mod列表慢？
+  Q：为什么获取mod列表慢？  
   A：请看上面使用代理的方式来下载。  
   
   Q：文件保存到哪了？  
-  A：默认在当前目录下的output文件夹，可用`--output`指定位置。
+  A：默认在当前目录下的output文件夹，可用`--output`指定位置。  
 
 ## 鸣谢
   cf-mirror使用了以下开源库，在此对这些开源库的作者表示致谢。
