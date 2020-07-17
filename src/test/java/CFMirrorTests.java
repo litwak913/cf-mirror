@@ -39,4 +39,10 @@ public class CFMirrorTests {
         Assert.assertEquals(cfg.dir, "./hello");
 
     }
+
+    @Test
+    public void testFileLength() {
+        int b = 1395864371;
+        Assert.assertEquals("1.29GB", Utility.getSize(b));
+    }
 }

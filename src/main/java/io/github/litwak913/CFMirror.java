@@ -44,7 +44,7 @@ public class CFMirror {
                         file.createNewFile();
                         log.info("create file:" + file.getName());
                         fw = new FileWriter(file);
-                        Utility.writeModInfoData(fw, v.getName());
+                    Utility.writeModInfoData(fw, v);
                     } catch (IOException e) {
                         Utility.crashAndExit("Fatal Error", e, log);
                     }
@@ -53,14 +53,13 @@ public class CFMirror {
                 log.info("Get mod file list:" + v.getName());
                 String fileJsonString = Utility.doHttpRequest("api/v2/addon/" + v.getId() + "/files");
 
-                List<ModsFiles> mflist = new Gson().fromJson(fileJsonString, new TypeToken<List<ModsFiles>>() {
-                }.getType());
+                List<ModsFiles> mflist = Utility.encodeModFileListJson(fileJsonString);
                 for (ModsFiles mf : mflist) {
                     log.debug(mf.getFileName());
                     log.debug(mf.getDownloadUrl());
 
                     try {
-                            Utility.writeModFileData(fw, mf.getFileName(), mf.getDownloadUrl(), mf.getFileLength());
+                        Utility.writeModFileData(fw, mf);
                         } catch (IOException e) {
                             Utility.crashAndExit("Fatal Error", e, log);
                         }
@@ -69,7 +68,7 @@ public class CFMirror {
                 }
                 try {
                     fw.close();
-                } catch (IOException e) {
+                } catch (Exception e) {
                     Utility.crashAndExit("Fatal Error", e, log);
                 }
             }
