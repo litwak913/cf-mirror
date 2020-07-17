@@ -88,14 +88,14 @@ public class Utility {
         }.getType());
     }
 
-    public static void writeModFileData(FileWriter fw, String fileName, String downloadUrl, int fileLength) throws IOException {
-        fw.write("FileName:" + fileName);
-        fw.write("FileLength:" + fileLength);
-        fw.write("DownloadUrl:" + downloadUrl);
+    public static void writeModFileData(FileWriter fw, ModsFiles mf) throws IOException {
+        fw.write("FileName:" + mf.getFileName());
+        fw.write("FileLength:" + mf.getFileLength());
+        fw.write("DownloadUrl:" + mf.getDownloadUrl());
     }
 
-    public static void writeModInfoData(FileWriter fw, String modName) throws IOException {
-        fw.write("ModName:" + modName);
+    public static void writeModInfoData(FileWriter fw, Mods m) throws IOException {
+        fw.write("ModName:" + m.getName());
     }
 
     public static void crashAndExit(String info, Throwable e, Log log) {
