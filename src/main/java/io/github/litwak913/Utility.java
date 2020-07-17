@@ -21,41 +21,53 @@ public class Utility {
 
     public static String doHttpRequest(String extra) {
         Log log;
+        boolean ok = false;
         String url = CF_URL + extra;
         int timeout = 60000;
         CloseableHttpClient httpClient = null;
         CloseableHttpResponse response = null;
         String result = null;
         log = LogFactory.getLog(Utility.class);
-        try {
-            httpClient = HttpClients.createDefault();
-            HttpGet httpGet = new HttpGet(url);
-            RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(timeout)
-                    .setConnectionRequestTimeout(timeout)
-                    .setSocketTimeout(timeout)
-                    .build();
-            httpGet.setConfig(requestConfig);
-            response = httpClient.execute(httpGet);
+        for (int i = 0; i == 2; i++) {
+            try {
+                httpClient = HttpClients.createDefault();
+                HttpGet httpGet = new HttpGet(url);
+                RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(timeout)
+                        .setConnectionRequestTimeout(timeout)
+                        .setSocketTimeout(timeout)
+                        .build();
+                httpGet.setConfig(requestConfig);
+                response = httpClient.execute(httpGet);
+                if (response.getStatusLine().getStatusCode() != 200) {
+                    log.error("Network Error, Try Again:" + (i + 1));
 
-            HttpEntity entity = response.getEntity();
+                }
+                if (response.getStatusLine().getStatusCode() == 200) {
+                    HttpEntity entity = response.getEntity();
+                    result = EntityUtils.toString(entity);
+                    break;
+                }
+            } catch (IOException e) {
+                log.error("Network Error, Try Again:" + (i + 1), e);
+            } finally {
+                if (result == null) {
+                    log.error("Network Error, Try Again:" + (i + 1));
+                }
+                if (null != response) {
+                    try {
+                        response.close();
+                    } catch (IOException e) {
+                        Utility.crashAndExit("Fatal Error", e, log);
+                    }
+                }
+                if (null != httpClient) {
+                    try {
+                        httpClient.close();
+                    } catch (IOException e) {
+                        Utility.crashAndExit("Fatal Error", e, log);
+                    }
+                }
 
-            result = EntityUtils.toString(entity);
-        } catch (IOException e) {
-            Utility.crashAndExit("Network Error", e, log);
-        } finally {
-            if (null != response) {
-                try {
-                    response.close();
-                } catch (IOException e) {
-                    Utility.crashAndExit("Fatal Error", e, log);
-                }
-            }
-            if (null != httpClient) {
-                try {
-                    httpClient.close();
-                } catch (IOException e) {
-                    Utility.crashAndExit("Fatal Error", e, log);
-                }
             }
         }
         return result;
