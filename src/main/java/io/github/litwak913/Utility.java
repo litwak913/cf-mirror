@@ -53,20 +53,24 @@ public class Utility {
                 if (result == null) {
                     log.error("Network Error, Try Again:" + (i + 1));
                 }
-                if (null != response) {
-                    try {
-                        response.close();
-                    } catch (IOException e) {
-                        Utility.crashAndExit("Fatal Error", e, log);
+                if (result != null) {
+
+                    if (null != response) {
+                        try {
+                            response.close();
+                        } catch (IOException e) {
+                            Utility.crashAndExit("Fatal Error", e, log);
+                        }
+                    }
+                    if (null != httpClient) {
+                        try {
+                            httpClient.close();
+                        } catch (IOException e) {
+                            Utility.crashAndExit("Fatal Error", e, log);
+                        }
                     }
                 }
-                if (null != httpClient) {
-                    try {
-                        httpClient.close();
-                    } catch (IOException e) {
-                        Utility.crashAndExit("Fatal Error", e, log);
-                    }
-                }
+
 
             }
         }
