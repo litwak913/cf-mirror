@@ -1,5 +1,7 @@
 
 name: Build CFMirror
+env:
+  ver: v1.1
 
 on:
   repository_dispatch:
@@ -26,8 +28,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v1.1
-        release_name: CFMirror 1.1
+        tag_name: ${{ env.ver }}
+        release_name: CFMirror ${{ env.ver }}
         draft: false
         prerelease: false
     - name: Upload Release Asset
@@ -37,6 +39,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./build/libs/CFMirror-*
-        asset_name: CFMirror-*
+        asset_path: ./build/libs/CFMirror-${{ env.ver }}
+        asset_name: CFMirror-${{ env.ver }}
         asset_content_type: application/java-archive
