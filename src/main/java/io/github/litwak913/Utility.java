@@ -90,7 +90,7 @@ public class Utility {
 
     public static void writeModFileData(FileWriter fw, ModsFiles mf) throws IOException {
         fw.write("FileName:" + mf.getFileName());
-        fw.write("FileLength:" + mf.getFileLength());
+        fw.write("FileLength:" + getSize(mf.getFileLength()));
         fw.write("DownloadUrl:" + mf.getDownloadUrl());
     }
 
