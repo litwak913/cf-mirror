@@ -53,8 +53,7 @@ public class CFMirror {
                 log.info("Get mod file list:" + v.getName());
                 String fileJsonString = Utility.doHttpRequest("api/v2/addon/" + v.getId() + "/files");
 
-                List<ModsFiles> mflist = new Gson().fromJson(fileJsonString, new TypeToken<List<ModsFiles>>() {
-                }.getType());
+                List<ModsFiles> mflist = Utility.encodeModFileListJson(fileJsonString);
                 for (ModsFiles mf : mflist) {
                     log.debug(mf.getFileName());
                     log.debug(mf.getDownloadUrl());
