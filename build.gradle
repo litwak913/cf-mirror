@@ -23,7 +23,7 @@ dependencies {
 
 jar {
     archivesBaseName='CFMirror'
-    archiveVersion='1.2'
+    archiveVersion='v1.2'
     manifest{
         attributes(
                 "Manifest-Version": 1.0,
