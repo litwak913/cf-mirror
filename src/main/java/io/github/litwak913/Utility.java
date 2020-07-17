@@ -102,4 +102,24 @@ public class Utility {
         log.error(info, e);
         System.exit(1);
     }
+
+    public static String getSize(int size) {
+        if (size < 1024) {
+            return size + "B";
+        } else {
+            size = size / 1024;
+        }
+        if (size < 1024) {
+            return size + "KB";
+        } else {
+            size = size / 1024;
+        }
+        if (size < 1024) {
+            size = size * 100;
+            return size / 100 + "." + size % 100 + "MB";
+        } else {
+            size = size * 100 / 1024;
+            return size / 100 + "." + size % 100 + "GB";
+        }
+    }
 }
